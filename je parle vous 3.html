@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices - Pronoms compléments d'objet</title>
+    <style>
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* En-tête */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Navigation des exercices */
+        .exercise-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Conteneur des exercices */
+        .exercise-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .exercise h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        /* Exemples */
+        .examples {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .examples h3 {
+            color: #17a2b8;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .examples p {
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .examples u {
+            background: #ffd700;
+            text-decoration: none;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .instructions p {
+            color: #856404;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Questions */
+        .questions {
+            margin-bottom: 25px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .question p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        /* Exercice 1 - Mots cliquables amélioré */
+        .sentence {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .word {
+            padding: 3px 6px;
+            margin: 0 2px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+
+        .word:hover {
+            background: #dee2e6;
+            transform: scale(1.05);
+        }
+
+        .word.selected {
+            background: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .word.incorrect {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        /* Exercice 2 : Options */
+        .options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .option-label:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .option-label.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .option-label.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        /* Champs de saisie */
+        .answer-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1.05em;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .answer-input.correct {
+            border-color: #28a745;
+            background-color: #d4edda;
+        }
+
+        .answer-input.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+        }
+
+        .pronoun-input {
+            width: 80px;
+            padding: 8px 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 1.05em;
+            font-family: inherit;
+            text-align: center;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .pronoun-input.correct {
+            border-color: #28a745;
+            background-color: #d4edda;
+        }
+
+        .pronoun-input.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+        }
+
+        .answer-input:focus,
+        .pronoun-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Bouton de vérification */
+        .check-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Résultats */
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .result h3 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .result .success {
+            color: #155724;
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            margin-top: 10px;
+        }
+
+        .result .info {
+            color: #0c5460;
+            background: #d1ecf1;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #bee5eb;
+            margin-top: 10px;
+        }
+
+        .result .warning {
+            color: #856404;
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ffeaa7;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* Correction */
+        .correct-answer {
+            color: #28a745;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* Animation de félicitations */
+        .celebration {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .celebration h2 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .celebration p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .confetti {
+            position: relative;
+            height: 200px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background: #ffd700;
+            top: 0;
+            opacity: 0;
+            animation: confetti 5s ease-in-out infinite;
+        }
+
+        .confetti-piece:nth-child(1) {
+            left: 7%;
+            transform: rotate(-40deg);
+            animation-delay: 0s;
+            background: #ff0000;
+        }
+
+        .confetti-piece:nth-child(2) {
+            left: 14%;
+            transform: rotate(4deg);
+            animation-delay: 0.5s;
+            background: #0088ff;
+        }
+
+        .confetti-piece:nth-child(3) {
+            left: 21%;
+            transform: rotate(-51deg);
+            animation-delay: 1s;
+            background: #ffd700;
+        }
+
+        .confetti-piece:nth-child(4) {
+            left: 28%;
+            transform: rotate(61deg);
+            animation-delay: 1.5s;
+            background: #00ff88;
+        }
+
+        .confetti-piece:nth-child(5) {
+            left: 35%;
+            transform: rotate(-52deg);
+            animation-delay: 2s;
+            background: #ff00ff;
+        }
+
+        .confetti-piece:nth-child(6) {
+            left: 42%;
+            transform: rotate(38deg);
+            animation-delay: 2.5s;
+            background: #ff8800;
+        }
+
+        .confetti-piece:nth-child(7) {
+            left: 49%;
+            transform: rotate(11deg);
+            animation-delay: 3s;
+            background: #00ffff;
+        }
+
+        .confetti-piece:nth-child(8) {
+            left: 56%;
+            transform: rotate(49deg);
+            animation-delay: 3.5s;
+            background: #8800ff;
+        }
+
+        .confetti-piece:nth-child(9) {
+            left: 63%;
+            transform: rotate(-72deg);
+            animation-delay: 4s;
+            background: #ff0066;
+        }
+
+        .confetti-piece:nth-child(10) {
+            left: 70%;
+            transform: rotate(10deg);
+            animation-delay: 4.5s;
+            background: #00ff00;
+        }
+
+        .confetti-piece:nth-child(11) {
+            left: 77%;
+            transform: rotate(42deg);
+            animation-delay: 5s;
+            background: #ff6600;
+        }
+
+        .confetti-piece:nth-child(12) {
+            left: 84%;
+            transform: rotate(-68deg);
+            animation-delay: 5.5s;
+            background: #0066ff;
+        }
+
+        .confetti-piece:nth-child(13) {
+            left: 91%;
+            transform: rotate(34deg);
+            animation-delay: 6s;
+            background: #ff00aa;
+        }
+
+        @keyframes confetti {
+            0% {
+                opacity: 0;
+                top: 0;
+                transform: rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                top: 200px;
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Messages d'erreur de capitalisation */
+        .capitalization-warning {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .capitalization-warning h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .capitalization-warning p {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .capitalization-warning button {
+            background: #ffc107;
+            color: #856404;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Classe utilitaire */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .exercise-nav {
+                gap: 5px;
+            }
+            
+            .nav-btn {
+                min-width: 80px;
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+            
+            .exercise-container {
+                padding: 20px;
+            }
+            
+            .options {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .answer-input {
+                font-size: 16px; /* Évite le zoom sur iOS */
+            }
+
+            .capitalization-warning {
+                width: 90%;
+                max-width: none;
+            }
+
+            .celebration h2 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+            
+            .exercise h2 {
+                font-size: 1.5em;
+            }
+            
+            .question {
+                padding: 12px;
+            }
+            
+            .exercise-container {
+                padding: 15px;
+            }
+
+            .celebration h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Les pronoms compléments d'objet</h1>
+            <p class="subtitle">Progression pédagogique pour niveau B2</p>
+        </header>
+
+        <nav class="exercise-nav">
+            <button class="nav-btn active" onclick="showExercise(1)">Exercice 1</button>
+            <button class="nav-btn" onclick="showExercise(2)">Exercice 2</button>
+            <button class="nav-btn" onclick="showExercise(3)">Exercice 3</button>
+            <button class="nav-btn" onclick="showExercise(4)">Exercice 4</button>
+            <button class="nav-btn" onclick="showExercise(5)">Exercice 5</button>
+            <button class="nav-btn" onclick="showExercise(6)">Exercice 6</button>
+            <button class="nav-btn" onclick="showExercise(7)">Exercice 7</button>
+            <button class="nav-btn" onclick="showExercise(8)">Félicitations</button>
+        </nav>
+
+        <main class="exercise-container">
+            <!-- Exercice 1 -->
+            <div class="exercise" id="exercise1">
+                <h2>Exercice 1 - Soulignez les pronoms compléments</h2>
+                <div class="examples">
+                    <h3>Exemples :</h3>
+                    <p>1. Elle <u>me</u> regarde avec attention. → <strong>me</strong></p>
+                    <p>2. Il <u>nous</u> explique la leçon. → <strong>nous</strong></p>
+                </div>
+                <div class="instructions">
+                    <p><strong>À vous :</strong> Cliquez sur les pronoms compléments dans les phrases suivantes :</p>
+                </div>
+                <div class="questions" id="ex1-questions"></div>
+                <button class="check-btn" onclick="checkExercise1()">Vérifier</button>
+                <div class="result" id="ex1-result"></div>
+            </div>
+
+            <!-- Exercice 2 -->
+            <div class="exercise hidden" id="exercise2">
+                <h2>Exercice 2 - Entourez la bonne réponse</h2>
+                <div class="examples">
+                    <h3>Exemples :</h3>
+                    <p>1. Pierre (<strong>me</strong>/moi) dit bonjour. → <strong>me</strong></p>
+                    <p>2. Marie (<strong>nus</strong>/à nous) explique tout. → <strong>nous</strong></p>
+                </div>
+                <div class="instructions">
+                    <p><strong>À vous :</strong> Choisissez la bonne réponse :</p>
+                </div>
+                <div class="questions" id="ex2-questions"></div>
+                <button class="check-btn" onclick="checkExercise2()">Vérifier</button>
+                <div class="result" id="ex2-result"></div>
+            </div>
+
+            <!-- Exercice 3 -->
+            <div class="exercise hidden" id="exercise3">
+                <h2>Exercice 3 - Transformez avec le pronom qui convient</h2>
+                <div class="examples">
+                    <h3>Exemples :</h3>
+                    <p>1. Il parle à Marie → Il lui parle.</p>
+                    <p>2. Je regarde les enfants → Je les regarde.</p>
+                </div>
+                <div class="instructions">
+                    <p><strong>À vous :</strong> Complétez les transformations :</p>
+                </div>
+                <div class="questions" id="ex3-questions"></div>
+                <button class="check-btn" onclick="checkExercise3()">Vérifier</button>
+                <div class="result" id="ex3-result"></div>
+            </div>
+
+            <!-- Exercice 4 -->
+            <div class="exercise hidden" id="exercise4">
+                <h2>Exercice 4 - Complétez avec le pronom correct</h2>
+                <div class="examples">
+                    <h3>Exemples :</h3>
+                    <p>1. Ma mère <strong>me</strong> téléphone chaque soir. → me</p>
+                    <p>2. Le professeur <strong>nous</strong> explique la grammaire. → nous</p>
+                </div>
+                <div class="instructions">
+                    <p><strong>À vous :</strong> Complétez avec le pronom correct (me, te, lui, nous, vous, leur) :</p>
+                </div>
+                <div class="questions" id="ex4-questions"></div>
+                <button class="check-btn" onclick="checkExercise4()">Vérifier</button>
+                <div class="result" id="ex4-result"></div>
+            </div>
+
+            <!-- Exercice 5 -->
+            <div class="exercise hidden" id="exercise5">
+                <h2>Exercice 5 - Complétez au passé composé avec le pronom</h2>
+                <div class="examples">
+                    <h3>Exemples :</h3>
+                    <p>1. Pierre ... a téléphoné hier soir. (à moi) → m'</p>
+                    <p>2. Marie ... a expliqué la leçon. (à nous) → nous</p>
+                </div>
+                <div class="instructions">
+                    <p><strong>À vous :</strong> Complétez avec le pronom correct :</p>
+                </div>
+                <div class="questions" id="ex5-questions"></div>
+                <button class="check-btn" onclick="checkExercise5()">Vérifier</button>
+                <div class="result" id="ex5-result"></div>
+            </div>
+
+            <!-- Exercice 6 -->
+            <div class="exercise hidden" id="exercise6">
+                <h2>Exercice 6 - Mettez au passé composé</h2>
+                <div class="examples">
+                    <h3>Exemples :</h3>
+                    <p>1. Il me dit la vérité → Il m'a dit la vérité.</p>
+                    <p>2. Elle vous téléphone → Elle vous a téléphoné.</p>
+                </div>
+                <div class="instructions">
+                    <p><strong>À vous :</strong> Transformez au passé composé :</p>
+                </div>
+                <div class="questions" id="ex6-questions"></div>
+                <button class="check-btn" onclick="checkExercise6()">Vérifier</button>
+                <div class="result" id="ex6-result"></div>
+            </div>
+
+            <!-- Exercice 7 -->
+            <div class="exercise hidden" id="exercise7">
+                <h2>Exercice 7 - Répondez en utilisant un pronom complément</h2>
+                <div class="examples">
+                    <h3>Exemples :</h3>
+                    <p>1. Est-ce que Paul te téléphone ? → Oui, il me téléphone.</p>
+                    <p>2. Tu comprends tes parents ? → Oui, je les comprends.</p>
+                </div>
+                <div class="instructions">
+                    <p><strong>À vous :</strong> Répondez en complétant avec le pronom :</p>
+                </div>
+                <div class="questions" id="ex7-questions"></div>
+                <button class="check-btn" onclick="checkExercise7()">Vérifier</button>
+                <div class="result" id="ex7-result"></div>
+            </div>
+
+            <!-- Exercice 8 - Félicitations -->
+            <div class="exercise hidden" id="exercise8">
+                <div class="celebration">
+                    <h2>🎉 Félicitations ! 🎉</h2>
+                    <p>Vous avez terminé tous les exercices sur les pronoms compléments d'objet !</p>
+                    <div class="confetti">
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                    </div>
+                    <p>Vous maîtrisez maintenant l'utilisation des pronoms compléments en français.</p>
+                    <p>Continuez à pratiquer pour perfectionner vos compétences !</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Données des exercices avec les phrases exactes de la conversation
+
+        const exerciseData = {
+            exercise1: [
+                { 
+                    text: "Tu lui donnes ton livre.", 
+                    answer: "lui",
+                    words: ["Tu", "lui", "donnes", "ton", "livre."]
+                },
+                { 
+                    text: "Nous vous attendons dehors.", 
+                    answer: "vous",
+                    words: ["Nous", "vous", "attendons", "dehors."]
+                },
+                { 
+                    text: "Je te comprends parfaitement.", 
+                    answer: "te",
+                    words: ["Je", "te", "comprends", "parfaitement."]
+                },
+                { 
+                    text: "Ils les invitent ce soir.", 
+                    answer: "les",
+                    words: ["Ils", "les", "invitent", "ce", "soir."]
+                },
+                { 
+                    text: "Elle leur raconte une histoire.", 
+                    answer: "leur",
+                    words: ["Elle", "leur", "raconte", "une", "histoire."]
+                },
+                { 
+                    text: "Il me téléphone souvent.", 
+                    answer: "me",
+                    words: ["Il", "me", "téléphone", "souvent."]
+                },
+                { 
+                    text: "Vous nous aidez beaucoup.", 
+                    answer: "nous",
+                    words: ["Vous", "nous", "aidez", "beaucoup."]
+                },
+                { 
+                    text: "Tu le connais bien.", 
+                    answer: "le",
+                    words: ["Tu", "le", "connais", "bien."]
+                },
+                { 
+                    text: "Je vous écoute attentivement.", 
+                    answer: "vous",
+                    words: ["Je", "vous", "écoute", "attentivement."]
+                },
+                { 
+                    text: "Elle lui parle doucement.", 
+                    answer: "lui",
+                    words: ["Elle", "lui", "parle", "doucement."]
+                }
+            ],
+            
+            exercise2: [
+                { text: "Il (te/toi) regarde.", options: ["te", "toi"], answer: "te" },
+                { text: "Elle (leur/à eux) parle français.", options: ["leur", "à eux"], answer: "leur" },
+                { text: "Nous (vous/à vous) écoutons.", options: ["vous", "à vous"], answer: "vous" },
+                { text: "Tu (lui/à elle) donnes l'adresse.", options: ["lui", "à elle"], answer: "lui" },
+                { text: "Je (les/eux) vois arriver.", options: ["les", "eux"], answer: "les" },
+                { text: "Ils (me/moi) comprennent.", options: ["me", "moi"], answer: "me" },
+                { text: "Elle (nous/à nous) aide toujours.", options: ["nous", "à nous"], answer: "nous" },
+                { text: "Vous (lui/à lui) téléphonez.", options: ["lui", "à lui"], answer: "lui" },
+                { text: "Tu (leur/à elles) racontes.", options: ["leur", "à elles"], answer: "leur" },
+                { text: "Il (vous/à vous) demande.", options: ["vous", "à vous"], answer: "vous" }
+            ],
+            
+            exercise3: [
+                { text: "Elle téléphone à Pierre →", answer: "Elle lui téléphone.", requiresCapitalizationAndPeriod: true },
+                { text: "Tu donnes le livre à Paul →", answer: "Tu lui donnes le livre.", requiresCapitalizationAndPeriod: true },
+                { text: "Nous aidons nos amis →", answer: "Nous les aidons.", requiresCapitalizationAndPeriod: true },
+                { text: "Vous expliquez à Claire →", answer: "Vous lui expliquez.", requiresCapitalizationAndPeriod: true },
+                { text: "Je vois mes parents →", answer: "Je les vois.", requiresCapitalizationAndPeriod: true },
+                { text: "Il raconte à ses enfants →", answer: "Il leur raconte.", requiresCapitalizationAndPeriod: true },
+                { text: "Tu appelles ta sœur →", answer: "Tu l'appelles.", requiresCapitalizationAndPeriod: true },
+                { text: "Elle comprend son professeur →", answer: "Elle le comprend.", requiresCapitalizationAndPeriod: true },
+                { text: "Nous écoutons notre professeur →", answer: "Nous l'écoutons.", requiresCapitalizationAndPeriod: true },
+                { text: "Ils regardent leurs amis →", answer: "Ils les regardent.", requiresCapitalizationAndPeriod: true }
+            ],
+            
+            exercise4: [
+                { text: "Je ... dis la vérité. (à toi)", answer: "te" },
+                { text: "Nous ... donnons notre adresse. (à vous)", answer: "vous" },
+                { text: "Tu ... racontes tes vacances. (à moi)", answer: "me" },
+                { text: "Il ... parle en français. (à nous)", answer: "nous" },
+                { text: "Elle ... aide pour les devoirs. (à toi)", answer: "te" },
+                { text: "Vous ... écoutez avec attention. (à nous)", answer: "nous" },
+                { text: "Ils ... comprennent parfaitement. (à moi)", answer: "me" },
+                { text: "Je ... demande votre opinion. (à vous)", answer: "vous" },
+                { text: "Elle ... raconte une histoire. (à nous)", answer: "nous" },
+                { text: "Tu ... expliques la règle. (à eux)", answer: "leur" }
+            ],
+            
+            exercise5: [
+                { text: "Je ... ai donné mon numéro. (à elle)", answer: "lui" },
+                { text: "Tu ... as raconté ton voyage. (à eux)", answer: "leur" },
+                { text: "Nous ... avons aidés pour déménager. (eux)", answer: "les" },
+                { text: "Elle ... a dit bonjour. (à vous)", answer: "vous" },
+                { text: "Il ... a comprise tout de suite. (elle)", answer: "l'" },
+                { text: "Vous ... avez écoutés attentivement. (nous)", answer: "nous" },
+                { text: "Ils ... ont parlé longtemps. (à lui)", answer: "lui" },
+                { text: "Je ... ai vus au cinéma. (eux)", answer: "les" },
+                { text: "Elle ... a raconté son voyage. (à moi)", answer: "m'" },
+                { text: "Tu ... as expliqué la situation. (à elles)", answer: "leur" }
+            ],
+            
+            exercise6: [
+                { text: "Nous lui expliquons →", answer: "Nous lui avons expliqué.", requiresCapitalizationAndPeriod: true },
+                { text: "Tu les regardes →", answer: "Tu les as regardés.", requiresCapitalizationAndPeriod: true },
+                { text: "Je leur parle →", answer: "Je leur ai parlé.", requiresCapitalizationAndPeriod: true },
+                { text: "Il nous aide →", answer: "Il nous a aidés.", requiresCapitalizationAndPeriod: true },
+                { text: "Elle te comprend →", answer: "Elle t'a compris.", requiresCapitalizationAndPeriod: true },
+                { text: "Vous me donnez →", answer: "Vous m'avez donné.", requiresCapitalizationAndPeriod: true },
+                { text: "Ils lui racontent →", answer: "Ils lui ont raconté.", requiresCapitalizationAndPeriod: true },
+                { text: "Tu nous écoutes →", answer: "Tu nous as écoutés.", requiresCapitalizationAndPeriod: true },
+                { text: "Je vous demande →", answer: "Je vous ai demandé.", requiresCapitalizationAndPeriod: true },
+                { text: "Elle leur explique →", answer: "Elle leur a expliqué.", requiresCapitalizationAndPeriod: true }
+            ],
+            
+            exercise7: [
+                { text: "Elle vous aide pour les cours ? → Oui, elle ...", answer: "nous aide.", requiresCapitalizationAndPeriod: true },
+                { text: "Vous parlez à votre professeur ? → Oui, nous ...", answer: "lui parlons.", requiresCapitalizationAndPeriod: true },
+                { text: "Il t'explique la grammaire ? → Oui, il ...", answer: "me l'explique.", requiresCapitalizationAndPeriod: true },
+                { text: "Tu donnes ton livre à Marie ? → Oui, je ...", answer: "le lui donne.", requiresCapitalizationAndPeriod: true },
+                { text: "Nous écoutons nos amis ? → Oui, nous ...", answer: "les écoutons.", requiresCapitalizationAndPeriod: true },
+                { text: "Elle raconte à ses enfants ? → Oui, elle ...", answer: "leur raconte.", requiresCapitalizationAndPeriod: true },
+                { text: "Vous regardez ce film ? → Oui, nous ...", answer: "le regardons.", requiresCapitalizationAndPeriod: true },
+                { text: "Il demande à Claire ? → Oui, il ...", answer: "lui demande.", requiresCapitalizationAndPeriod: true },
+                { text: "Tu téléphones à tes parents ? → Oui, je ...", answer: "leur téléphone.", requiresCapitalizationAndPeriod: true },
+                { text: "Elle comprend ses élèves ? → Oui, elle ...", answer: "les comprend.", requiresCapitalizationAndPeriod: true }
+            ]
+        };
+
+        // Variables globales
+        let currentExercise = 1;
+        let userAnswers = {};
+
+        // Fonction pour afficher un exercice
+        function showExercise(exerciseNumber) {
+            // Masquer tous les exercices
+            document.querySelectorAll('.exercise').forEach(ex => {
+                ex.classList.add('hidden');
+            });
+            
+            // Désactiver tous les boutons de navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Afficher l'exercice sélectionné
+            document.getElementById(`exercise${exerciseNumber}`).classList.remove('hidden');
+            document.querySelector(`button[onclick="showExercise(${exerciseNumber})"]`).classList.add('active');
+            
+            currentExercise = exerciseNumber;
+            
+            // Générer les questions pour cet exercice
+            if (exerciseNumber !== 8) {
+                generateQuestions(exerciseNumber);
+            }
+        }
+
+        // Fonction pour générer les questions
+        function generateQuestions(exerciseNumber) {
+            const container = document.getElementById(`ex${exerciseNumber}-questions`);
+            const data = exerciseData[`exercise${exerciseNumber}`];
+            
+            container.innerHTML = '';
+            userAnswers[exerciseNumber] = {};
+            
+            switch(exerciseNumber) {
+                case 1:
+                    generateExercise1(container, data);
+                    break;
+                case 2:
+                    generateExercise2(container, data);
+                    break;
+                case 3:
+                    generateExercise3(container, data);
+                    break;
+                case 4:
+                    generateExercise4(container, data);
+                    break;
+                case 5:
+                    generateExercise5(container, data);
+                    break;
+                case 6:
+                    generateExercise6(container, data);
+                    break;
+                case 7:
+                    generateExercise7(container, data);
+                    break;
+            }
+        }
+
+        // Exercice 1 : Souligner les pronoms
+        function generateExercise1(container, data) {
+            data.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'question';
+                
+                const sentenceDiv = document.createElement('div');
+                sentenceDiv.className = 'sentence';
+                
+                // Créer chaque mot comme élément cliquable
+                item.words.forEach(word => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.className = 'word';
+                    wordSpan.textContent = word;
+                    wordSpan.onclick = () => toggleWord1(index, word, wordSpan);
+                    sentenceDiv.appendChild(wordSpan);
+                    sentenceDiv.appendChild(document.createTextNode(' '));
+                });
+                
+                div.innerHTML = `<p>${index + 3}.</p>`;
+                div.appendChild(sentenceDiv);
+                container.appendChild(div);
+            });
+        }
+
+        function toggleWord1(questionIndex, word, element) {
+            // Nettoyer le mot de la ponctuation pour la comparaison
+            const cleanWord = word.replace(/[.,!?;:]$/, '');
+            
+            // Si ce mot est déjà sélectionné, le désélectionner
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                delete userAnswers[1][questionIndex];
+                return;
+            }
+            
+            // Désélectionner tous les autres mots de cette question
+            const questionElement = element.closest('.question');
+            questionElement.querySelectorAll('.word').forEach(el => {
+                el.classList.remove('selected');
+                el.classList.remove('incorrect');
+            });
+            
+            // Sélectionner ce mot
+            element.classList.add('selected');
+            userAnswers[1][questionIndex] = cleanWord;
+        }
+
+        // Exercice 2 : Choix multiples
+        function generateExercise2(container, data) {
+            data.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'question';
+                
+                const baseText = item.text.replace(/\([^)]+\)/, '...');
+                
+                div.innerHTML = `
+                    <p>${index + 3}. ${baseText}</p>
+                    <div class="options">
+                        ${item.options.map(option => `
+                            <label class="option-label">
+                                <input type="radio" name="q2_${index}" value="${option}" onchange="setAnswer2(${index}, '${option}')">
+                                ${option}
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div class="correction" id="correction2_${index}"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function setAnswer2(questionIndex, answer) {
+            userAnswers[2] = userAnswers[2] || {};
+            userAnswers[2][questionIndex] = answer;
+        }
+
+        // Exercice 3 : Transformation
+        function generateExercise3(container, data) {
+            data.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'question';
+                
+                div.innerHTML = `
+                    <p>${index + 3}. ${item.text}</p>
+                    <input type="text" id="ex3_${index}" class="answer-input" onchange="setAnswer3(${index}, this.value)">
+                    <div class="correction" id="correction3_${index}"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function setAnswer3(questionIndex, answer) {
+            userAnswers[3] = userAnswers[3] || {};
+            userAnswers[3][questionIndex] = answer.trim();
+        }
+
+        // Exercice 4 : Complétion
+        function generateExercise4(container, data) {
+            data.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'question';
+                
+                div.innerHTML = `
+                    <p>${index + 3}. ${item.text}</p>
+                    <input type="text" id="ex4_${index}" class="pronoun-input" onchange="setAnswer4(${index}, this.value)">
+                    <div class="correction" id="correction4_${index}"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function setAnswer4(questionIndex, answer) {
+            userAnswers[4] = userAnswers[4] || {};
+            userAnswers[4][questionIndex] = answer.trim();
+        }
+
+        // Exercice 5 : Complétion passé composé
+        function generateExercise5(container, data) {
+            data.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'question';
+                
+                div.innerHTML = `
+                    <p>${index + 3}. ${item.text}</p>
+                    <input type="text" id="ex5_
